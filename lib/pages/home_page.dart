@@ -53,7 +53,10 @@ class _HomePageState extends State<HomePage> {
           ),
         ],
       ),
-      body: screens[_currentIndex],
+      body: Container(
+        padding: const EdgeInsets.all(16),
+        child: screens[_currentIndex],
+      ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
         onTap: (index) {
