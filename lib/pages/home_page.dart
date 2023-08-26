@@ -3,6 +3,7 @@ import 'package:youtube/screens/youtube_home.dart';
 import 'package:youtube/screens/youtube_library.dart';
 import 'package:youtube/screens/youtube_subscriptions.dart';
 import 'package:youtube/screens/youtube_trend.dart';
+import 'package:youtube/widgets/custom_search_delegate.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -13,11 +14,12 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int _currentIndex = 0;
+  String _result = '';
 
   @override
   Widget build(BuildContext context) {
     List<Widget> screens = [
-      const YoutubeHome(),
+      YoutubeHome(search: _result),
       const YoutubeTrend(),
       const YoutubeSubscriptions(),
       const YoutubeLibrary(),
@@ -34,23 +36,29 @@ class _HomePageState extends State<HomePage> {
         ),
         actions: [
           IconButton(
-            onPressed: () {
-              print('Videocam');
-            },
-            icon: const Icon(Icons.videocam),
-          ),
-          IconButton(
-            onPressed: () {
-              print('Pesquisa');
+            onPressed: () async {
+              String searchResult = await showSearch(
+                context: context,
+                delegate: CustomSearchDelegate(),
+              );
+              setState(() {
+                _result = searchResult;
+              });
             },
             icon: const Icon(Icons.search),
           ),
-          IconButton(
-            onPressed: () {
-              print('Conta');
-            },
-            icon: const Icon(Icons.account_circle),
-          ),
+          // IconButton(
+          //   onPressed: () {
+          //     print('Videocam');
+          //   },
+          //   icon: const Icon(Icons.videocam),
+          // ),
+          // IconButton(
+          //   onPressed: () {
+          //     print('Conta');
+          //   },
+          //   icon: const Icon(Icons.account_circle),
+          // ),
         ],
       ),
       body: Container(

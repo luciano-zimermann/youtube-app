@@ -10,13 +10,11 @@ class YoutubeSubscriptions extends StatefulWidget {
 class _YoutubeSubscriptionsState extends State<YoutubeSubscriptions> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Center(
-        child: Text(
-          'Inscrições',
-          style: TextStyle(
-            fontSize: 25,
-          ),
+    return const Center(
+      child: Text(
+        'Inscrições',
+        style: TextStyle(
+          fontSize: 25,
         ),
       ),
     );

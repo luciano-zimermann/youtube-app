@@ -10,13 +10,11 @@ class YoutubeLibrary extends StatefulWidget {
 class _YoutubeLibraryState extends State<YoutubeLibrary> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Center(
-        child: Text(
-          'Biblioteca',
-          style: TextStyle(
-            fontSize: 25,
-          ),
+    return const Center(
+      child: Text(
+        'Biblioteca',
+        style: TextStyle(
+          fontSize: 25,
         ),
       ),
     );

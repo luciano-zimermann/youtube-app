@@ -10,13 +10,11 @@ class YoutubeTrend extends StatefulWidget {
 class _YoutubeTrendState extends State<YoutubeTrend> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Center(
-        child: Text(
-          'Em Alta',
-          style: TextStyle(
-            fontSize: 25,
-          ),
+    return const Center(
+      child: Text(
+        'Em Alta',
+        style: TextStyle(
+          fontSize: 25,
         ),
       ),
     );

@@ -3,21 +3,26 @@ import 'package:youtube/models/video.dart';
 import 'package:youtube/util/api.dart';
 
 class YoutubeHome extends StatefulWidget {
-  const YoutubeHome({Key? key}) : super(key: key);
+  const YoutubeHome({
+    Key? key,
+    required this.search,
+  }) : super(key: key);
+
+  final String search;
 
   @override
   _YoutubeHomeState createState() => _YoutubeHomeState();
 }
 
 class _YoutubeHomeState extends State<YoutubeHome> {
-  Future<List<Video>> _getVideos() {
-    return Api().search('');
+  Future<List<Video>> _getVideos(String value) {
+    return Api().search(value);
   }
 
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<List<Video>>(
-      future: _getVideos(),
+      future: _getVideos(widget.search),
       builder: (context, snapshot) {
         switch (snapshot.connectionState) {
           case ConnectionState.none:
@@ -35,7 +40,8 @@ class _YoutubeHomeState extends State<YoutubeHome> {
                   return Column(
                     children: [
                       FadeInImage(
-                        placeholder: const AssetImage('images/loading_image.gif'),
+                        placeholder:
+                            const AssetImage('images/loading_image.gif'),
                         image: NetworkImage(video.image),
                         fit: BoxFit.cover,
                         width: double.infinity,
